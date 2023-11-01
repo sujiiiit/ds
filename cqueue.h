@@ -33,7 +33,7 @@ int isFull(struct CQueue *cq) {
 
 int enqueue(struct CQueue *cq, int ele) {
   if (isFull(cq)) {
-    printf("Queue is full");
+    printf("Queue is full\n");
     return -1;
   } else {
     cq->rear = (cq->rear + 1) % cq->capacity;
@@ -41,13 +41,13 @@ int enqueue(struct CQueue *cq, int ele) {
       cq->front = 0;
     }
     cq->arr[cq->rear] = ele;
-    printf("Element Inserted\n");
+    printf("Element Inserted : %d\n",ele);
   }
 }
 
 int dequeue(struct CQueue *cq) {
   if (isEmpty(cq)) {
-    printf("Queue is Empty");
+    printf("Queue is Empty\n");
     return -1;
   } else {
     int ele = cq->arr[cq->front];
@@ -56,13 +56,13 @@ int dequeue(struct CQueue *cq) {
     } else {
       cq->front = (cq->front + 1) % cq->capacity;
     }
-    printf("Element removed : %d", ele);
+    printf("Element removed : %d\n", ele);
   }
 }
 
 int display(struct CQueue *cq) {
   if (isEmpty(cq)) {
-    printf("Queue is Empty");
+    printf("Queue is Empty\n");
     return -1;
   } else {
     int i = cq->front;
@@ -70,5 +70,6 @@ int display(struct CQueue *cq) {
       printf("%d", cq->arr[i]);
       i = (i + 1) % cq->capacity;
     }
+    printf("\n");
   }
 }
